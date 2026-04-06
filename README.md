@@ -68,6 +68,11 @@ Isso evita perda acidental de dados, já que o json-server não possui lixeira p
 ## 📝 Mini PRD
 O documento de produto está em [PRD.md](./PRD.md).
 
+## 🧪 Versão de teste
+Se quiser testar a aplicação rapidamente, acesse a versão publicada:
+
+- [https://organizador-de-estudos-maxineathos.vercel.app/](https://organizador-de-estudos-maxineathos.vercel.app/)
+
 ## 🌐 Deploy
 Deploy oficial do repositório: **Vercel** ✅
 
