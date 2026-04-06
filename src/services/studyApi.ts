@@ -56,6 +56,16 @@ export const studyApi = {
     return parseResponse<StudyItem>(response)
   },
 
+  async update(id: number, input: StudyItemInput): Promise<StudyItem> {
+    const response = await fetch(`${RESOURCE}/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(input),
+    })
+
+    return parseResponse<StudyItem>(response)
+  },
+
   async remove(id: number): Promise<void> {
     const response = await fetch(`${RESOURCE}/${id}`, {
       method: 'DELETE',

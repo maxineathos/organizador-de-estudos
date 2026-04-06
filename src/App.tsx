@@ -13,7 +13,8 @@ const initialFilters: StudyFiltersType = {
 }
 
 function App() {
-  const { items, isLoading, error, addItem, toggleStatus, removeItem, loadItems } = useStudyItems()
+  const { items, isLoading, error, addItem, toggleStatus, updateItem, removeItem, loadItems } =
+    useStudyItems()
   const [filters, setFilters] = useState<StudyFiltersType>(initialFilters)
 
   const filteredItems = useMemo(() => {
@@ -87,7 +88,12 @@ function App() {
             <p>Buscando seus registros de estudo na API.</p>
           </section>
         ) : (
-          <StudyList items={filteredItems} onToggle={toggleStatus} onRemove={removeItem} />
+          <StudyList
+            items={filteredItems}
+            onToggle={toggleStatus}
+            onUpdate={updateItem}
+            onRemove={removeItem}
+          />
         )}
 
         <div className={styles.actionsBar}>

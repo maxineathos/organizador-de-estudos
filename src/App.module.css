@@ -287,6 +287,20 @@
   gap: 0.5rem;
 }
 
+.inlineEditGrid {
+  width: 100%;
+  display: grid;
+  gap: 0.76rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.cardButtonRow {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+}
+
 .actionsBar {
   display: flex;
   justify-content: flex-end;
@@ -315,6 +329,15 @@
   }
 
   .actions {
+    width: 100%;
+  }
+
+  .cardButtonRow {
+    flex-direction: column;
+  }
+
+  .cardButtonRow .primaryButton,
+  .cardButtonRow .secondaryButton {
     width: 100%;
   }
 

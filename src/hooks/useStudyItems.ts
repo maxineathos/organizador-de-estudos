@@ -42,6 +42,11 @@ export const useStudyItems = () => {
     setItems((prev) => prev.filter((item) => item.id !== id))
   }, [])
 
+  const updateItem = useCallback(async (id: number, input: StudyItemInput) => {
+    const updated = await studyApi.update(id, input)
+    setItems((prev) => prev.map((item) => (item.id === id ? updated : item)))
+  }, [])
+
   return {
     items,
     isLoading,
@@ -49,6 +54,7 @@ export const useStudyItems = () => {
     loadItems,
     addItem,
     toggleStatus,
+    updateItem,
     removeItem,
   }
 }
