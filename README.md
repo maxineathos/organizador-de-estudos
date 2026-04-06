@@ -69,29 +69,19 @@ Isso evita perda acidental de dados, já que o json-server não possui lixeira p
 O documento de produto está em [PRD.md](./PRD.md).
 
 ## 🌐 Deploy
-### 1. Publicar a API (json-server)
-Importante: json-server **não é serverless por natureza**. Ele roda como um servidor Node em execução.
+Deploy oficial do repositório: **Vercel** ✅
 
-Sugestão: Render (Web Service)
-
-1. Suba este projeto para um repositório no GitHub.
-2. No Render, clique em **New + > Web Service**.
-3. Conecte o repositório.
-4. Configure:
-   - Root Directory: `.`
-   - Build Command: `npm install`
-   - Start Command: `npm run api:prod`
-5. Copie a URL pública gerada (ex.: `https://seu-backend.onrender.com`).
-
-### 2. Publicar o frontend (Vercel)
+### Publicar o frontend (Vercel)
 1. No Vercel, adicione a variável de ambiente:
-   - `VITE_API_URL=https://seu-backend.onrender.com`
+   - `VITE_API_URL=https://SUA_API_PUBLICA.com`
 2. Importe o repositório.
 3. Configure:
    - Root Directory: `.`
    - Build Command: `npm run build`
    - Output Directory: `dist`
 4. Faça o deploy.
+
+Observação: se você usar API externa, mantenha apenas a URL da API em `VITE_API_URL`.
 
 ## ✅ Entregas acadêmicas
 - Código e documentação no GitHub.
