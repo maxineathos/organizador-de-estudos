@@ -2,6 +2,14 @@ import { useCallback, useEffect, useState } from 'react'
 import { studyApi } from '../services/studyApi'
 import type { StudyItem, StudyItemInput } from '../types/study'
 
+const sortByNewestFirst = (items: StudyItem[]) =>
+  [...items].sort((left, right) => {
+    const leftTime = new Date(left.createdAt).getTime()
+    const rightTime = new Date(right.createdAt).getTime()
+
+    return rightTime - leftTime
+  })
+
 export const useStudyItems = () => {
   const [items, setItems] = useState<StudyItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -13,7 +21,7 @@ export const useStudyItems = () => {
 
     try {
       const data = await studyApi.list()
-      setItems(data)
+      setItems(sortByNewestFirst(data))
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Falha ao carregar seus estudos.'
       setError(message)
@@ -28,7 +36,7 @@ export const useStudyItems = () => {
 
   const addItem = useCallback(async (input: StudyItemInput) => {
     const created = await studyApi.create(input)
-    setItems((prev) => [created, ...prev])
+    setItems((prev) => sortByNewestFirst([created, ...prev]))
   }, [])
 
   const toggleStatus = useCallback(async (item: StudyItem) => {
